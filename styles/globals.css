@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep:    #040810;
+  --bg-base:    #060c18;
+  --bg-raised:  #0a1220;
+  --bg-panel:   #0d1a2e;
+  --border:     #1a2535;
+  --border-dim: #0d1a2e;
+  --blue:       #4a9eff;
+  --blue-dim:   #1e3a5a;
+  --green:      #00ff88;
+  --yellow:     #ffd700;
+  --purple:     #c792ea;
+  --orange:     #ff9f43;
+  --red:        #ff4466;
+  --text:       #c8d3f5;
+  --text-dim:   #8a9bb5;
+  --text-muted: #4a6080;
+  --text-ghost: #2a4060;
+}
+
+/* Amber terminal theme (toggle via data-theme="amber" on <html>) */
+:root[data-theme="amber"] {
+  --blue:       #ffb000;
+  --blue-dim:   #5a3a14;
+  --green:      #ffd166;
+  --yellow:     #ffb000;
+  --purple:     #ff8c42;
+  --orange:     #ff8c42;
+  --red:        #ff5544;
+}
+
+html, body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--blue-dim); }
+
+/* Selection */
+::selection { background: var(--blue-dim); color: var(--blue); }
+
+/* Links */
+a { color: var(--blue); text-decoration: none; }
+a:hover { opacity: 0.8; }
+
+/* Buttons */
+button { cursor: pointer; }
+button:hover { opacity: 0.85; }
+button:active { opacity: 0.7; }
+
+/* Inputs */
+input { font-family: inherit; }
+input::placeholder { color: var(--text-ghost); }
+input:focus { outline: none; }
+
+/* Scanline effect */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.fade-in  { animation: fadeIn 0.35s ease both; }
+.slide-in { animation: slideIn 0.3s ease both; }
+
+/* Recharts overrides */
+.recharts-tooltip-wrapper { z-index: 100; }
+
+/* ── Navbar responsive layout ──────────────────────────────────────────── */
+.nav-tabs-desktop {
+  display: flex;
+  margin-left: auto;
+}
+.nav-mobile-toggle {
+  display: none;
+  margin-left: auto;
+}
+
+@media (max-width: 720px) {
+  .nav-tabs-desktop { display: none; }
+  .nav-mobile-toggle { display: flex; }
+  .nav-brand-text, .nav-target-text { font-size: 10px !important; }
+}
+
+@media (max-width: 480px) {
+  .nav-brand-text { display: none; }
+}
+
+/* ── Activity heatmap ──────────────────────────────────────────────────── */
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 11px);
+  gap: 3px;
+}
+.heatmap-cell {
+  width: 11px;
+  height: 11px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-dim);
+}

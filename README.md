@@ -250,6 +250,6 @@ MIT — do whatever you want with it.
 
 <div align="center">
 
-See [CHANGELOG.md](./CHANGELOG.md) for the full revision history.
+See [CHANGELOG.md](./Changelog.md) for the full revision history.
 
 </div>

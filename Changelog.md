@@ -26,7 +26,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Renamed the env var from `ANTHROPIC_API_KEY` to `GROQ_API_KEY`.
 - Updated request/response shape in `ai-insights.js` to match Groq's chat-completions format (`choices[0].message.content` instead of Anthropic's `content[]` block array).
 
----
+-----
 
 ## [1.1.0] — Feature pass + mobile bug fix
 
